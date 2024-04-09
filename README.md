@@ -39,3 +39,22 @@ L'algorithme de machine learning s'effectue dans ce sens
 2. machine-leraning.ipynb : entraînement d'une régression linéaire et d'un réseau de neurone jusqu'à J+5 
 3. inference-arpege.ipynb : inférer la régression linéaire à J+2 en utilisant la prédiction Arpege la plus proche des stations météo
 
+### Prérequis
+- Python 3.11
+- Django 3.1 ou supérieur
+- Bibliothèque Folium pour les cartes
+- Un environnement virtuel Python (recommandé) avec les extensions suivantes :
+    - Jupyter
+    - SQLite Viewer
+- Lancer la commande
+pip install -r requirements.txt
+
+### Effectuer les migrations de la base de données
+```bash
+cd projet
+python manage.py makemigrations
+python manage.py migrate
+python manage.py import_station  ( insertion des données du fichier "Stations.csv" en base de données)
+python manage.py import_watercourse ( insertion des données du fichier "watercourse_data.csv" en base de données)
+
+```
