@@ -3,28 +3,69 @@
 <head>
     {% load static %} 
     <link rel="stylesheet" type="text/css" href="{% static 'interface_client/css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta charset="UTF-8">
     <title>Page d'Accueil</title>
+   
 </head>
 <body>
-    {% include 'interface_client/menu.html' %}
-    <h1>Bienvenue sur Ma Page</h1>
-    <p>Ceci est un exemple de page index avec Django.</p>
+
+    <header>
+        <nav class="navbar navbar-custom">
+            <div class="container">
+                <span class="navbar-brand" style="margin-left: -50px;" >
+                    <i class="fas fa-home mr-1"></i>
+                    Prédiction du débit d'un fleuve
+                </span>
+            </div>
+        </nav>
+    </header>
     
-    <ul>
-        {% for element in liste_elements %}
-            <li>{{ element }}</li>
-        {% endfor %}
-    </ul>
+    <div class="forms"> 
+        <div class="formContainer">
+          <h4>Veuillez faire votre choix </h4>
+        </div>
+        <hr />
+        <form onSubmit={handleSubmit} id="myForm">
+            <div class="form-group">
+                <label for="ville">Sélectionnez la ville :</label>
+                <select id="ville" class="form-select form-selVeuillez selectionner la ville qui vous interesseect-lg mb-3 custom-select" aria-label=".form-select-lg example" name="ville" required>
+                    <option value="" selected disabled>Merci de sélectionner une ville</option>
+                    {% for commune in communes %}
+                    <option value="{{ commune }}">{{ commune }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            
+        
+            <div class="form-group">
+                <label for="fleuve">Sélectionnez un fleuve :</label>
+                <select id="fleuve" class="form-select form-select-lg mb-3 custom-select" aria-label=".form-select-lg example" name="fleuve">
+                    <option value="" selected disabled>Merci de sélectionner le fleuve correspondant à la ville choisie</option>
+                    {% for fleuve in fleuves %}
+                        <option value="{{ fleuve }}">{{ fleuve }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="start">Date :</label>
+                <input type="date" id="start" name="trip-start" class="form-control">
+            </div>
+            
+            <button type="submit" class="button">Soumettre</button>
+        </form>
+    </div>  
 
-    {% if liste_elements %}
-        <p>La liste contient {{ liste_elements|length }} éléments.</p>
-    {% else %}
-        <p>La liste est vide.</p>
-    {% endif %}
+    <!-- Chargement des scripts Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'interface_client/js/ville.js' %}"></script>
+    <script src="{% static 'interface_client/js/fleuves.js' %}"></script>
+    <script src="{% static 'interface_client/js/submit_data.js' %}"></script>
 
-    <div id="test">
-        J'essaye de faire une div rouge
-    </div>
 </body>
 </html>
+

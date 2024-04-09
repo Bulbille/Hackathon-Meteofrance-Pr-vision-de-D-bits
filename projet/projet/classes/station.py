@@ -249,6 +249,12 @@ class StationManager():
             Test \\sf1coeur\SHT-RD-PRODUCTION\Production\RnI_PLANT\05 - Espace contributeurs\2024\LAGARDE Cyril\20 - Stockage libre\\test_issue16.ipynb
         """
         return correlation_df.plot(xlabel="Time shift", ylabel="Correlation", title="Correlation '{}' and '{}'".format(self, station))    
+    @classmethod
+    async def get_commune(cls):
+        communes = await sync_to_async(lambda: list(db_Station.objects.values('libelle_commune').distinct()))()
+        commune_names = [commune['libelle_commune'] for commune in communes]
+        unique_commune_names = list(set(commune_names))
+        return unique_commune_names
     
     def __repr__(self) -> str:
         return self.libelle_station

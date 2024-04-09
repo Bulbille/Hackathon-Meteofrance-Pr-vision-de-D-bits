@@ -427,6 +427,15 @@ class Watercourse():
             return lst[min(index_value_1, index_value_2): max(index_value_1, index_value_2) + 1]
         except ValueError:
             return None
+        
+    @classmethod
+    async def get_fleuves(cls):
+        fleuves = await sync_to_async(lambda: list(db_Watercourse.objects.values('name').distinct()))()
+        fleuves = [commune['name'] for commune in fleuves]
+        unique_fleuve_names = list(set(fleuves ))
+        return  unique_fleuve_names    
+    
+    
 # This class aims to create a CSV file gathering all the metadata of the watercourses in France.
 #We use the methods from the Watercourse class. This class is a subclass of Watercourse; it inherits the necessary methods. 
 #The generated file will then be used for data insertion into the database.  

@@ -16,14 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views.views import index, weather_view, data_view, station_view , watercourse_view
+from .views.views import index,submit_data 
+#  weather_view, data_view, station_view , watercourse_view
 
 urlpatterns = [
     path("", index, name="index"),
-    path('weather', weather_view, name='weather'),
-    path('data_hydro', data_view, name='data_hydro'),
-    path('map', station_view, name='search-stations'),
-    path('watercourse', watercourse_view, name='watercourse-stations'),
-    path('admin/', admin.site.urls),
+    path('submit-data/', submit_data, name='submit_data'),
 
 ]

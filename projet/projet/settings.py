@@ -59,6 +59,7 @@ TEMPLATES = [
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
             BASE_DIR / 'projet/templates',
+            BASE_DIR / 'projet/templates/interface_client',
             
             ],
         "APP_DIRS": True,
@@ -125,6 +126,7 @@ STATIC_URL = "static/"
 
 STATICFILES_DIRS = [
     BASE_DIR / 'projet/static',
+    BASE_DIR / 'projet/templates/interface_client',
 ]
 
 # Default primary key field type
