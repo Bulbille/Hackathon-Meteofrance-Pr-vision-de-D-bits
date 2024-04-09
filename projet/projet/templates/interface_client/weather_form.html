@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'interface_client/css/weather.css' %}">
+    <meta charset="UTF-8">
+
+</head>
+<body>
+    {% include 'interface_client/menu.html' %}
+
+    <h1>Recherche Météorologique</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="location">Localisation :</label>
+        <input type="text" id="location" name="location" required><br><br>
+
+        <label for="start_date">Date de Début (YYYY-MM-DD) :</label>
+        <input type="date" id="start_date" name="start_date" required><br><br>
+
+        <label for="end_date">Date de Fin (YYYY-MM-DD) :</label>
+        <input type="date" id="end_date" name="end_date" required><br><br>
+
+        <label for="api_key">Clé API :</label>
+        <input type="text" id="api_key" name="api_key" required><br><br>
+        
+        <label for="">Granularité des données :</label>
+        <input type="radio" id="daily" name="granularity" value="days" checked>
+        <label for="daily" class="radio-label">Journalier</label>
+        
+        <input type="radio" id="hourly" name="granularity" value="">
+        <label for="hourly" class="radio-label">Horaire</label><br><br>
+
+        <label for="">Format de téléchargement :</label>
+        <input type="radio" id="json" name="file_format" value="json" checked>
+        <label for="json" class="radio-label">JSON</label>
+    
+        <input type="radio" id="csv" name="file_format" value="csv">
+        <label for="csv" class="radio-label">CSV</label><br><br>
+    
+        <button type="submit">Rechercher</button>
+    </form>
+
+    {% if weather_data %}
+    {% endif %}
+</body>
+</html>

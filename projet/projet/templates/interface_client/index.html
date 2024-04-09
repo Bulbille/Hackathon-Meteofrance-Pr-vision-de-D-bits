@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% load static %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'interface_client/css/style.css' %}">
+    <meta charset="UTF-8">
+    <title>Page d'Accueil</title>
+</head>
+<body>
+    {% include 'interface_client/menu.html' %}
+    <h1>Bienvenue sur Ma Page</h1>
+    <p>Ceci est un exemple de page index avec Django.</p>
+    
+    <ul>
+        {% for element in liste_elements %}
+            <li>{{ element }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if liste_elements %}
+        <p>La liste contient {{ liste_elements|length }} éléments.</p>
+    {% else %}
+        <p>La liste est vide.</p>
+    {% endif %}
+
+    <div id="test">
+        J'essaye de faire une div rouge
+    </div>
+</body>
+</html>
