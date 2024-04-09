@@ -23,7 +23,7 @@ Les utilisateurs sont tous les acteurs de prélèvement d’eau douce (agriculte
 
 Membres de l’équipe et leurs compétences :  
 - Thierry MANDON : développeur informatique 
--V irgil COURVALET : dev front-end 
+- Virgil COURVALET : dev front-end 
 - Mélodie PAYEN : développeur informatique 
 - Sarah GRIB : dev front-end 
 - José Manuel FLORES PEREZ : rapporteur 
